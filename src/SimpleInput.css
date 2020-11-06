@@ -1,8 +1,63 @@
 
 .container {
-	width: 50%;
+	width: 100%;
 	position: relative;
-	border: 1px solid #eee;
-	margin: auto;
-	padding: 1rem;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.SimpleInput {
+	width: calc(100% - 8px);
+	margin-right: 8px;
+	border: none;
+	border-bottom: 2px solid #33F3FF;
+	transition: all 0.4s ease-in;
+	z-index: 2;
+	position: relative;
+	background: none;
+    top: 0;
+    left: 0;
+    padding: 16px 12px 8px 2px;
+    outline: 0;
+    color: #555;
+}
+
+.SimpleInput:valid {
+	background: white;
+}
+
+.SimpleInput:focus, 
+.SimpleInput:active, 
+.SimpleInput:hover {
+	outline: none;
+	box-shadow: none;
+	border-color: #9333FF;
+}
+
+label {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	transition: all 0.4s ease-in;
+	padding: 8px 0;
+	z-index: 1;
+	text-transform: uppercase;
+	color: #929ca0;
+	text-align: left;
+}
+
+.SimpleInput:focus + label {
+	color: #bf86ff;
+	font-size: 70%;
+	padding: 1px 0;
+	z-index: 2;
+}
+
+.icon {
+	position: absolute;
+	right: 0;
+	bottom: 8px;
+    z-index: 3;
 }

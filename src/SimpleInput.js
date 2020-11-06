@@ -7,11 +7,20 @@ export default class SimpleInput extends React.PureComponent {
 	render () {
 		return (
 			<div className='container'>
-				<input type='text' value={this.state.inputValue} onChange={this.handleInputChange}/> 
-				&nbsp;
+				<input 
+					className='SimpleInput' 
+					type='text' 
+					required 
+					value={this.state.inputValue} 
+					onChange={this.handleInputChange}
+					onBlur={this.submitUpdate}
+				/> 
+				
 				{(!this.state.inputError && this.state.inputValue !== '') && 
-					<FontAwesomeIcon icon='check' color='green'/>
+					<div className='icon'><FontAwesomeIcon icon='check' color='green'/></div>
 				}
+				
+				<label>{this.props.field}</label>
 			</div>
 		);
 	}
@@ -25,4 +34,6 @@ export default class SimpleInput extends React.PureComponent {
 		const {target = {}} = e || {};
 		this.setState({inputValue: target.value});
 	}
+
+	submitUpdate = () => this.props.handleUpdate(this.props.field, this.state.inputValue);
 }

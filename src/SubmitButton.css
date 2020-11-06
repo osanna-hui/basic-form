@@ -1,0 +1,14 @@
+.submitButton {
+	padding: 8px 36px;
+    border: none;
+    background: #1e6bc5;
+    border-radius: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+	background: #1756a0;
+	box-shadow: 1px 2px 4px 1px #999;
+}

@@ -1,0 +1,15 @@
+.FormContainer {
+	width: 60%;
+	margin: 2rem auto;
+	border: 1px solid #eee;
+	 padding: 1rem;
+}
+
+.HalfForm {
+	display: flex;
+	justify-content: space-between;
+}
+
+.HalfForm div {
+	width: 48%;
+}

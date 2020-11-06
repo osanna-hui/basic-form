@@ -1,22 +1,56 @@
-import React from 'react';
+import React, { Fragment, Component } from 'react';
 import SimpleInput from './SimpleInput.js';
+import SubmitButton from './SubmitButton.js';
+import EventDate from './EventDate.js';
+import './BasicForm.css';
 
-export default class BasicForm extends React.Component {
+export default class BasicForm extends Component {
 	render () {
+		const results = Object.values(this.state.form).filter(value => value !== undefined);
 		return (
-			<div>
-				Form:
-				<SimpleInput handleUpdate={this.handleUpdate}/>
-			</div>
+			<Fragment>
+				<div className='FormContainer'>
+					<SimpleInput field='email' handleUpdate={this.handleUpdate}/>
+					<div className='HalfForm'>
+						<SimpleInput field='firstName' handleUpdate={this.handleUpdate}/>
+						<SimpleInput field='lastName' handleUpdate={this.handleUpdate}/>
+					</div>
+					<div className='HalfForm'>
+						<EventDate handleUpdate={this.handleUpdate}/>
+					</div>
+					<SubmitButton onClick={this.handleSubmit}/>
+				</div>
+				{this.state.submitCount !== 0 && 
+					<div>
+						Results:
+						{results.map((value, index) => <div key={index}>{value}</div>)}
+					</div>
+				}
+			</Fragment>
 		);
 	}
 
 	state = {
-		inputValue: ''
+		form: {
+			'email': '',
+			'firstName': '',
+			'lastName': '',
+			'eventDate': ''
+		},
+		submitCount: 0
 	}
 
-	handleUpdate = e => {
-		const {target = {}} = e || {};
-		this.setState({inputValue: target.value});
+	handleUpdate = (field, value) => {
+		const form = this.state.form;
+		this.setState({
+			form: {
+				...form,
+				[field]: value
+			}
+		});
+	}
+
+	handleSubmit = () => {
+		this.setState({submitCount: this.state.submitCount + 1});
 	}
 }
