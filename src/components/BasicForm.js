@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import SimpleInput from './SimpleInput.js';
 import SubmitButton from './SubmitButton.js';
-import EventDate from './EventDate.js';
+import {inputTypes} from '../helpers.js';
 import './BasicForm.css';
 
 export default class BasicForm extends Component {
@@ -10,17 +10,29 @@ export default class BasicForm extends Component {
 		return (
 			<Fragment>
 				<div className='FormContainer'>
-					<SimpleInput field='email' handleUpdate={this.handleUpdate}/>
+					<SimpleInput
+						field='email'
+						type={inputTypes.EMAIL}
+						isRequired={true}
+						handleUpdate={this.handleUpdate}/>
+
 					<div className='HalfForm'>
-						<SimpleInput field='firstName' handleUpdate={this.handleUpdate}/>
-						<SimpleInput field='lastName' handleUpdate={this.handleUpdate}/>
+						<SimpleInput
+							field='firstName'
+							type={inputTypes.TEXT}
+							isRequired={true}
+							handleUpdate={this.handleUpdate}/>
+						<SimpleInput
+							field='lastName'
+							type={inputTypes.TEXT}
+							isRequired={true}
+							handleUpdate={this.handleUpdate}/>
 					</div>
-					<div className='HalfForm'>
-						<EventDate handleUpdate={this.handleUpdate}/>
-					</div>
+
 					<SubmitButton onClick={this.handleSubmit}/>
 				</div>
-				{this.state.submitCount !== 0 && 
+
+				{this.state.submitCount !== 0 &&
 					<div>
 						Results:
 						{results.map((value, index) => <div key={index}>{value}</div>)}
@@ -35,7 +47,6 @@ export default class BasicForm extends Component {
 			'email': '',
 			'firstName': '',
 			'lastName': '',
-			'eventDate': ''
 		},
 		submitCount: 0
 	}

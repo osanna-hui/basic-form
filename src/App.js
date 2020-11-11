@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import BasicForm from './BasicForm.js';
-import './icons.js';
+import BasicForm from './components/BasicForm.js';
+import './components/icons.js';
 
 function App() {
   return (
